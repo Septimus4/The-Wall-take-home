@@ -1,0 +1,6 @@
+# act configuration
+# Use medium runner for better compatibility
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+
+# Enable verbose output for debugging
+--verbose

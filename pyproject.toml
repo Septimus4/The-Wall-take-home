@@ -1,0 +1,163 @@
+[tool.poetry]
+name = "thewall"
+version = "0.1.0"
+description = "Event-driven Wall-building simulator"
+authors = ["Wall Demo <demo@wall.com>"]
+readme = "README.md"
+packages = [
+    {include = "shared"},
+    {include = "thewall"},
+    {include = "services"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+# API Gateway (Django)
+django = "^5.0"
+djangorestframework = "^3.14"
+daphne = "^4.0"
+django-prometheus = "^2.3"
+# Simulation Service (FastAPI)
+fastapi = "^0.104"
+uvicorn = {extras = ["standard"], version = "^0.24"}
+# Database & ORM
+psycopg2-binary = "^2.9"
+sqlalchemy = "^2.0"
+alembic = "^1.12"
+# Kafka & Avro
+confluent-kafka = "^2.3"
+fastavro = "^1.8"
+protobuf = "^4.25"
+requests = "^2.31"
+cachetools = "^5.3"
+# HTTP client
+httpx = "^0.25"
+# Utilities
+pydantic = "^2.5"
+pydantic-settings = "^2.1"
+structlog = "^23.2"
+dj-database-url = "^3.0.1"
+
+[tool.poetry.group.dev.dependencies]
+# Linting & formatting
+ruff = "^0.1"
+black = "^23.11"
+mypy = "^1.7"
+# Testing
+pytest = "^7.4"
+pytest-asyncio = "^0.21"
+pytest-cov = "^4.1"
+pytest-django = "^4.7"
+testcontainers = "^3.7"
+# Documentation
+mkdocs = "^1.5"
+mkdocs-material = "^9.4"
+mkdocs-include-markdown-plugin = "^6.0"
+# Pre-commit
+pre-commit = "^3.5"
+# Type stubs
+types-requests = "^2.31"
+django-stubs = "^4.2"
+djangorestframework-stubs = "^3.14"
+pydantic = "^2.11.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+select = ["E", "F", "W", "C90", "I", "N", "UP", "B", "A", "C4", "T20", "SIM", "ARG"]
+ignore = ["E501", "A003"]
+extend-exclude = [".venv", "__pycache__", ".git"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+"test_*.py" = ["ARG001", "ARG002"]
+"benchmark_tool.py" = ["ALL"]
+"infrastructure/**" = ["ALL"]
+"benchmarks/**" = ["ALL"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+extend-exclude = '''
+/(
+  \.venv
+  | __pycache__
+  | \.git
+)/
+'''
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+plugins = ["pydantic.mypy"]
+exclude = [
+    "benchmark_tool.py",
+    "infrastructure/.*",
+    "benchmarks/.*",
+    ".venv/.*",
+    "__pycache__/.*"
+]
+
+[[tool.mypy.overrides]]
+module = ["services.simulator.main"]
+disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+# [tool.django-stubs]
+# django_settings_module = "thewall.settings.test"
+
+[[tool.mypy.overrides]]
+module = [
+    "confluent_kafka.*",
+    "testcontainers.*",
+    "shared.wall_common.*",
+    "services.materializer.*",
+    "services.simulator.*",
+    "django.*",
+    "benchmark_tool",
+    "infrastructure.*",
+    "benchmarks.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["apps.profiles.models", "apps.common.models"]
+disable_error_code = ["var-annotated"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov-report=term-missing",
+    "--cov-branch",
+]
+
+[tool.coverage.run]
+source = ["shared", "thewall", "services"]
+omit = ["*/tests/*", "*/migrations/*", "benchmark_tool.py", "infrastructure/*", "benchmarks/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]

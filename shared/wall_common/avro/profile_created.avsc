@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "name": "ProfileCreated",
+  "namespace": "com.wall.events",
+  "doc": "Event published when a new wall profile is created",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Unique event identifier"
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "doc": "ISO 8601 formatted timestamp"
+    },
+    {
+      "name": "event_type",
+      "type": "string",
+      "default": "ProfileCreated",
+      "doc": "Type of event"
+    },
+    {
+      "name": "profile_id",
+      "type": "string",
+      "doc": "Unique wall profile identifier"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Human-readable name for the wall"
+    },
+    {
+      "name": "height",
+      "type": "string",
+      "doc": "Wall height in feet (decimal string)"
+    },
+    {
+      "name": "length",
+      "type": "string",
+      "doc": "Wall length in feet (decimal string)"
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "doc": "Wall width in feet (decimal string)"
+    },
+    {
+      "name": "ice_thickness",
+      "type": "string",
+      "doc": "Ice thickness added per day in feet (decimal string)"
+    },
+    {
+      "name": "created_by",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "User who created the profile"
+    }
+  ]
+}

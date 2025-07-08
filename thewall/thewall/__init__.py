@@ -1,0 +1,3 @@
+"""
+Django main configuration package.
+"""

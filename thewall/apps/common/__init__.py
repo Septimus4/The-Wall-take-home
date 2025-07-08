@@ -1,0 +1,3 @@
+"""
+Common Django app package.
+"""

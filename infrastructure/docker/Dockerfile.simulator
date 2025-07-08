@@ -1,0 +1,36 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libpq-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Poetry
+RUN pip install poetry
+
+# Copy entire source early so packages are available for install
+COPY . .
+
+# Configure poetry: Don't create virtualenv (we're in a container)
+RUN poetry config virtualenvs.create false
+
+# Install dependencies (after full copy so packages exist)
+RUN poetry install
+
+# Expose port
+EXPOSE 9000
+
+# Health check (adjust port for each service)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:9000/health || exit 1
+
+# Default working directory (set to root where services are accessible)
+WORKDIR /app
+
+# Default command (run from the services module)
+CMD ["python", "-m", "services.simulator.main"]

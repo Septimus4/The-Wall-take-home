@@ -1,0 +1,64 @@
+{
+  "type": "record",
+  "name": "SimulationProgress",
+  "namespace": "com.wall.events",
+  "doc": "Event published with daily simulation progress",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Unique event identifier"
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "doc": "ISO 8601 formatted timestamp"
+    },
+    {
+      "name": "event_type",
+      "type": "string",
+      "default": "SimulationProgress",
+      "doc": "Type of event"
+    },
+    {
+      "name": "profile_id",
+      "type": "string",
+      "doc": "Unique wall profile identifier"
+    },
+    {
+      "name": "day",
+      "type": "int",
+      "doc": "Simulation day number (1-based)"
+    },
+    {
+      "name": "ice_volume",
+      "type": "string",
+      "doc": "Ice volume added this day in cubic feet (decimal string)"
+    },
+    {
+      "name": "manpower_hours",
+      "type": "string",
+      "doc": "Labor hours required this day (decimal string)"
+    },
+    {
+      "name": "material_cost",
+      "type": "string",
+      "doc": "Material cost for this day in USD (decimal string)"
+    },
+    {
+      "name": "labor_cost",
+      "type": "string",
+      "doc": "Labor cost for this day in USD (decimal string)"
+    },
+    {
+      "name": "total_cost",
+      "type": "string",
+      "doc": "Total cost for this day in USD (decimal string)"
+    },
+    {
+      "name": "cumulative_cost",
+      "type": "string",
+      "doc": "Cumulative project cost in USD (decimal string)"
+    }
+  ]
+}

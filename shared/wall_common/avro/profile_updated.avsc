@@ -1,0 +1,65 @@
+{
+  "type": "record",
+  "name": "ProfileUpdated",
+  "namespace": "com.wall.events",
+  "doc": "Event published when a wall profile is updated",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Unique event identifier"
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "doc": "ISO 8601 formatted timestamp"
+    },
+    {
+      "name": "event_type",
+      "type": "string",
+      "default": "ProfileUpdated",
+      "doc": "Type of event"
+    },
+    {
+      "name": "profile_id",
+      "type": "string",
+      "doc": "Unique wall profile identifier"
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Updated wall name"
+    },
+    {
+      "name": "height",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Updated wall height in feet (decimal string)"
+    },
+    {
+      "name": "length",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Updated wall length in feet (decimal string)"
+    },
+    {
+      "name": "width",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Updated wall width in feet (decimal string)"
+    },
+    {
+      "name": "ice_thickness",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Updated ice thickness per day in feet (decimal string)"
+    },
+    {
+      "name": "updated_by",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "User who updated the profile"
+    }
+  ]
+}
