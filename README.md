@@ -5,7 +5,7 @@
 
 A Django REST API system for managing the construction of the 30-foot ice wall defending the Seven Kingdoms. Track material quantities, costs, and crew management with real-time calculations.
 
-🏰 **[Task Requirements](#-task-requirements)** | 🚀 **[Quick Start](#-quick-start)** | 📊 **[API Reference](docs/api-reference.md)** | 🧪 **[Testing](#-testing)**
+🏰 **[Task Requirements](#-task-requirements)** | 🚀 **[Quick Start](#-quick-start)** | 🧪 **[Testing](#-testing)**
 
 ## 🏗️ The Story
 
@@ -202,13 +202,7 @@ docker compose down -v
 * ✅ Accurate cost: `ice × 1,900`
 * ✅ Exact match with task-provided data
 
-## 📚 Documentation
-
-* [Setup Guide](docs/setup.md)
-* [API Reference](docs/api-reference.md)
-* [System Overview](docs/index.md)
-
-## 🚀 Production Deployment
+##  Production Deployment
 
 ```bash
 export DJANGO_SETTINGS_MODULE=thewall.settings.production
