@@ -1,0 +1,708 @@
+{
+  "timestamp": "2025-07-09T22:18:22.030990",
+  "system_info": {
+    "base_url": "http://localhost:8000",
+    "profiles_created": 5,
+    "task_profiles": [
+      {
+        "profile_id": "task-profile-1",
+        "name": "Task Profile 1 - [21, 25, 28]",
+        "height": 21.0,
+        "length": 100.0,
+        "width": 3.0,
+        "ice_thickness": 0.3,
+        "sections": [
+          21,
+          25,
+          28
+        ]
+      },
+      {
+        "profile_id": "task-profile-2",
+        "name": "Task Profile 2 - [17]",
+        "height": 17.0,
+        "length": 100.0,
+        "width": 3.0,
+        "ice_thickness": 0.3,
+        "sections": [
+          17
+        ]
+      },
+      {
+        "profile_id": "task-profile-3",
+        "name": "Task Profile 3 - [17, 22, 17, 19, 17]",
+        "height": 17.0,
+        "length": 100.0,
+        "width": 3.0,
+        "ice_thickness": 0.3,
+        "sections": [
+          17,
+          22,
+          17,
+          19,
+          17
+        ]
+      },
+      {
+        "profile_id": "task-profile-4",
+        "name": "Task Profile 4 - Extended [10, 15, 20, 25, 30, 35, 40]",
+        "height": 10.0,
+        "length": 100.0,
+        "width": 3.0,
+        "ice_thickness": 0.3,
+        "sections": [
+          10,
+          15,
+          20,
+          25,
+          30,
+          35,
+          40
+        ]
+      },
+      {
+        "profile_id": "task-profile-5",
+        "name": "Task Profile 5 - Long Build [5, 8, 12, 16, 20, 24, 28, 32, 36, 40]",
+        "height": 5.0,
+        "length": 100.0,
+        "width": 3.0,
+        "ice_thickness": 0.3,
+        "sections": [
+          5,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40
+        ]
+      }
+    ]
+  },
+  "benchmark_results": [
+    {
+      "scenario": "Simple Load Test",
+      "duration_seconds": 30.26166582107544,
+      "virtual_users": 10,
+      "requests_per_second": 27.625709864847426,
+      "avg_response_time_ms": 260.47087314596587,
+      "p95_response_time_ms": 553.0481338500977,
+      "p99_response_time_ms": 737.9677295684814,
+      "error_rate_percent": 0.0,
+      "timestamp": "2025-07-09T22:18:21.014255"
+    }
+  ],
+  "task_endpoint_results": {
+    "Profile 1 Day 1": {
+      "status_code": 200,
+      "response_time_ms": 31.518220901489258,
+      "data": {
+        "day": 1,
+        "ice_amount": "585.00",
+        "active_sections": 3
+      },
+      "expectations_met": true
+    },
+    "Profile 2 Day 1": {
+      "status_code": 200,
+      "response_time_ms": 33.85138511657715,
+      "data": {
+        "day": 1,
+        "ice_amount": "195.00",
+        "active_sections": 1
+      },
+      "expectations_met": true
+    },
+    "Profile 3 Day 1": {
+      "status_code": 200,
+      "response_time_ms": 25.59971809387207,
+      "data": {
+        "day": 1,
+        "ice_amount": "975.00",
+        "active_sections": 5
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Day 1": {
+      "status_code": 200,
+      "response_time_ms": 31.216144561767578,
+      "data": {
+        "day": 1,
+        "ice_amount": "780.00",
+        "active_sections": 4
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Day 1": {
+      "status_code": 200,
+      "response_time_ms": 46.352386474609375,
+      "data": {
+        "day": 1,
+        "ice_amount": "1365.00",
+        "active_sections": 7
+      },
+      "expectations_met": true
+    },
+    "Profile 1 Day 3": {
+      "status_code": 200,
+      "response_time_ms": 37.54115104675293,
+      "data": {
+        "day": 3,
+        "ice_amount": "390.00",
+        "active_sections": 2
+      },
+      "expectations_met": true
+    },
+    "Profile 2 Day 3": {
+      "status_code": 200,
+      "response_time_ms": 32.54866600036621,
+      "data": {
+        "day": 3,
+        "ice_amount": "195.00",
+        "active_sections": 1
+      },
+      "expectations_met": true
+    },
+    "Profile 3 Day 3": {
+      "status_code": 200,
+      "response_time_ms": 34.22284126281738,
+      "data": {
+        "day": 3,
+        "ice_amount": "975.00",
+        "active_sections": 5
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Day 3": {
+      "status_code": 200,
+      "response_time_ms": 28.192520141601562,
+      "data": {
+        "day": 3,
+        "ice_amount": "780.00",
+        "active_sections": 4
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Day 3": {
+      "status_code": 200,
+      "response_time_ms": 22.405385971069336,
+      "data": {
+        "day": 3,
+        "ice_amount": "1170.00",
+        "active_sections": 6
+      },
+      "expectations_met": true
+    },
+    "Profile 1 Day 5": {
+      "status_code": 200,
+      "response_time_ms": 26.6263484954834,
+      "data": {
+        "day": 5,
+        "ice_amount": "390.00",
+        "active_sections": 2
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Day 5": {
+      "status_code": 200,
+      "response_time_ms": 28.951168060302734,
+      "data": {
+        "day": 5,
+        "ice_amount": "780.00",
+        "active_sections": 4
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Day 5": {
+      "status_code": 200,
+      "response_time_ms": 25.159358978271484,
+      "data": {
+        "day": 5,
+        "ice_amount": "1170.00",
+        "active_sections": 6
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Day 7": {
+      "status_code": 200,
+      "response_time_ms": 28.28526496887207,
+      "data": {
+        "day": 7,
+        "ice_amount": "585.00",
+        "active_sections": 3
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Day 7": {
+      "status_code": 200,
+      "response_time_ms": 24.543285369873047,
+      "data": {
+        "day": 7,
+        "ice_amount": "975.00",
+        "active_sections": 5
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Day 10": {
+      "status_code": 200,
+      "response_time_ms": 25.689363479614258,
+      "data": {
+        "day": 10,
+        "ice_amount": "975.00",
+        "active_sections": 5
+      },
+      "expectations_met": true
+    },
+    "Profile 1 Overview Day 1": {
+      "status_code": 200,
+      "response_time_ms": 28.90491485595703,
+      "data": {
+        "day": 1,
+        "cost": "1111500.00",
+        "cumulative_cost": "1111500.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 1 Overview Day 3": {
+      "status_code": 200,
+      "response_time_ms": 26.187419891357422,
+      "data": {
+        "day": 3,
+        "cost": "741000.00",
+        "cumulative_cost": "2964000.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Overview Day 1": {
+      "status_code": 200,
+      "response_time_ms": 18.578529357910156,
+      "data": {
+        "day": 1,
+        "cost": "1482000.00",
+        "cumulative_cost": "1482000.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 4 Extended Overview Day 5": {
+      "status_code": 200,
+      "response_time_ms": 17.734527587890625,
+      "data": {
+        "day": 5,
+        "cost": "1482000.00",
+        "cumulative_cost": "7410000.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Overview Day 1": {
+      "status_code": 200,
+      "response_time_ms": 22.436141967773438,
+      "data": {
+        "day": 1,
+        "cost": "2593500.00",
+        "cumulative_cost": "2593500.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Overview Day 7": {
+      "status_code": 200,
+      "response_time_ms": 19.930362701416016,
+      "data": {
+        "day": 7,
+        "cost": "1852500.00",
+        "cumulative_cost": "15931500.00"
+      },
+      "expectations_met": true
+    },
+    "Profile 5 Long Overview Day 10": {
+      "status_code": 200,
+      "response_time_ms": 19.901752471923828,
+      "data": {
+        "day": 10,
+        "cost": "1852500.00",
+        "cumulative_cost": "21489000.00"
+      },
+      "expectations_met": true
+    },
+    "All Profiles Overview Day 1": {
+      "status_code": 200,
+      "response_time_ms": 89.89667892456055,
+      "data": {
+        "day": 1,
+        "total_cost": "14820000.00",
+        "profiles": [
+          {
+            "id": "b5209bfe-9d3d-4512-9515-3ba59039f5b4",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 2593500.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "1b9718dc-ae60-4a69-924f-571943ba96fd",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1482000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "b503d3e7-a381-4c33-8183-f738855fc989",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1852500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61f10629-d4ea-4cd3-b65d-12c100eeecc9",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 370500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "bfe4e0b2-4762-4819-9fe6-5094e4a01014",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1111500.0,
+            "sections_count": 3,
+            "active_sections": 3
+          },
+          {
+            "id": "70db093d-8d3f-4bb9-91bf-891b47c7436f",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 2593500.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "3892aae0-bdd8-457c-8bd0-2c4f2502d057",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1482000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "7a4c97ce-c799-446f-a696-f0e86896b490",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1852500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61a14645-01c5-48c7-a6fb-e017cad8d3ea",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 370500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "d83fff5a-e87b-4527-8c46-6d5a29fce17c",
+            "name": "Profile 1",
+            "day": 1,
+            "cost": 1111500.0,
+            "sections_count": 3,
+            "active_sections": 3
+          }
+        ]
+      },
+      "expectations_met": true
+    },
+    "All Profiles Overview Day 3": {
+      "status_code": 200,
+      "response_time_ms": 87.99076080322266,
+      "data": {
+        "day": 3,
+        "total_cost": "42978000.00",
+        "profiles": [
+          {
+            "id": "b5209bfe-9d3d-4512-9515-3ba59039f5b4",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 7410000.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "1b9718dc-ae60-4a69-924f-571943ba96fd",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 4446000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "b503d3e7-a381-4c33-8183-f738855fc989",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 5557500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61f10629-d4ea-4cd3-b65d-12c100eeecc9",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 1111500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "bfe4e0b2-4762-4819-9fe6-5094e4a01014",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 2964000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          },
+          {
+            "id": "70db093d-8d3f-4bb9-91bf-891b47c7436f",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 7410000.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "3892aae0-bdd8-457c-8bd0-2c4f2502d057",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 4446000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "7a4c97ce-c799-446f-a696-f0e86896b490",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 5557500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61a14645-01c5-48c7-a6fb-e017cad8d3ea",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 1111500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "d83fff5a-e87b-4527-8c46-6d5a29fce17c",
+            "name": "Profile 1",
+            "day": 3,
+            "cost": 2964000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          }
+        ]
+      },
+      "expectations_met": true
+    },
+    "All Profiles Overview Day 5": {
+      "status_code": 200,
+      "response_time_ms": 99.20597076416016,
+      "data": {
+        "day": 5,
+        "total_cost": "69654000.00",
+        "profiles": [
+          {
+            "id": "b5209bfe-9d3d-4512-9515-3ba59039f5b4",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 11856000.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "1b9718dc-ae60-4a69-924f-571943ba96fd",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 7410000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "b503d3e7-a381-4c33-8183-f738855fc989",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 9262500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61f10629-d4ea-4cd3-b65d-12c100eeecc9",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 1852500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "bfe4e0b2-4762-4819-9fe6-5094e4a01014",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 4446000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          },
+          {
+            "id": "70db093d-8d3f-4bb9-91bf-891b47c7436f",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 11856000.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "3892aae0-bdd8-457c-8bd0-2c4f2502d057",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 7410000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "7a4c97ce-c799-446f-a696-f0e86896b490",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 9262500.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61a14645-01c5-48c7-a6fb-e017cad8d3ea",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 1852500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "d83fff5a-e87b-4527-8c46-6d5a29fce17c",
+            "name": "Profile 1",
+            "day": 5,
+            "cost": 4446000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          }
+        ]
+      },
+      "expectations_met": true
+    },
+    "Final Overview": {
+      "status_code": 200,
+      "response_time_ms": 86.88688278198242,
+      "data": {
+        "day": null,
+        "total_cost": "173394000.00",
+        "profiles": [
+          {
+            "id": "b5209bfe-9d3d-4512-9515-3ba59039f5b4",
+            "name": "Profile 1",
+            "day": 25,
+            "cost": 35938500.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "1b9718dc-ae60-4a69-924f-571943ba96fd",
+            "name": "Profile 1",
+            "day": 20,
+            "cost": 18525000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "b503d3e7-a381-4c33-8183-f738855fc989",
+            "name": "Profile 1",
+            "day": 13,
+            "cost": 21489000.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61f10629-d4ea-4cd3-b65d-12c100eeecc9",
+            "name": "Profile 1",
+            "day": 13,
+            "cost": 4816500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "bfe4e0b2-4762-4819-9fe6-5094e4a01014",
+            "name": "Profile 1",
+            "day": 9,
+            "cost": 5928000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          },
+          {
+            "id": "70db093d-8d3f-4bb9-91bf-891b47c7436f",
+            "name": "Profile 1",
+            "day": 25,
+            "cost": 35938500.0,
+            "sections_count": 10,
+            "active_sections": 7
+          },
+          {
+            "id": "3892aae0-bdd8-457c-8bd0-2c4f2502d057",
+            "name": "Profile 1",
+            "day": 20,
+            "cost": 18525000.0,
+            "sections_count": 7,
+            "active_sections": 4
+          },
+          {
+            "id": "7a4c97ce-c799-446f-a696-f0e86896b490",
+            "name": "Profile 1",
+            "day": 13,
+            "cost": 21489000.0,
+            "sections_count": 5,
+            "active_sections": 5
+          },
+          {
+            "id": "61a14645-01c5-48c7-a6fb-e017cad8d3ea",
+            "name": "Profile 1",
+            "day": 13,
+            "cost": 4816500.0,
+            "sections_count": 1,
+            "active_sections": 1
+          },
+          {
+            "id": "d83fff5a-e87b-4527-8c46-6d5a29fce17c",
+            "name": "Profile 1",
+            "day": 9,
+            "cost": 5928000.0,
+            "sections_count": 3,
+            "active_sections": 3
+          }
+        ]
+      },
+      "expectations_met": true
+    }
+  },
+  "summary": {
+    "total_benchmarks": 1,
+    "total_task_endpoints": 27,
+    "avg_requests_per_second": 27.625709864847426,
+    "avg_response_time_ms": 260.47087314596587,
+    "error_rate_range": {
+      "min_percent": 0.0,
+      "max_percent": 0.0
+    },
+    "status_code_distribution": {
+      "200": 27
+    },
+    "benchmark_type": "load_test"
+  }
+}
