@@ -66,4 +66,3 @@ echo "   • Close idle connections: python manage.py db_connections --action=cl
 echo "   • Monitor continuously: python manage.py db_connections --action=monitor --watch"
 echo "   • Reduce pool size: export DB_MAX_CONNS=15"
 echo ""
-echo "📖 Full documentation: docs/database-connections.md"
