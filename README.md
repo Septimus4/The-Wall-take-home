@@ -1,226 +1,134 @@
-# The Wall - Construction Management System
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Septimus4/The-Wall-take-home)
+# 🧱 The Wall - Take-Home Project
 
 > *"The White Walkers sleep beneath the ice for thousands of years. And when they wake up... I hope the Wall is high enough."*
 
-A Django REST API system for managing the construction of the 30-foot ice wall defending the Seven Kingdoms. Track material quantities, costs, and crew management with real-time calculations.
+A domain-driven, event-sourced construction simulation system built with Django, FastAPI, and Kafka. This project tracks the construction of a 30-foot ice wall by managing wall profile definitions, simulating builds asynchronously, and capturing logs and metrics for analysis.
 
-🏰 **[Task Requirements](#-task-requirements)** | 🚀 **[Quick Start](#-quick-start)** | 🧪 **[Testing](#-testing)**
+---
 
-## 🏗️ The Story
+## 📌 Overview
 
-The Wall is a colossal fortification stretching for 100 leagues (300 miles) along the northern border. Standing 30 feet tall and made of solid ice, it defends against the wildlings beyond. Each mile-long section has its own construction crew working simultaneously to reach the target height.
+This system simulates a real-time, collaborative wall-building scenario. Inspired by the world of Westeros, each mile-long segment of the Wall is managed by its own construction team, with material quantities and costs tracked independently. The architecture is designed for scalability, modularity, and observability.
 
-### Construction Rules
+---
 
-* **Target Height**: 30 feet for all sections
-* **Materials**: 195 cubic yards of ice per foot of height
-* **Cost**: 1,900 Gold Dragons per cubic yard
-* **Daily Progress**: Each crew adds 1 foot per day
-* **Crew Management**: Crews are relieved at 30 feet
+## 📚 Documentation
 
-## 🎯 Task Requirements
+For an in-depth explanation of the architecture, components, and design decisions, see the full project documentation hosted on DeepWiki:
 
-This system implements the exact requirements from *The Wall* construction management task:
+👉 [Project Documentation on DeepWiki](https://deepwiki.com/Septimus4/The-Wall-take-home/1-overview)
 
-### Required API Endpoints
+---
 
-* `GET /profiles/{id}/days/{day}/`
-* `GET /profiles/{id}/overview/{day}/`
-* `GET /profiles/overview/{day}/`
-* `GET /profiles/overview/`
+## ⚙️ Tech Stack
 
-### Example Data & Expected Results
+* **API Gateway**: Django + DRF
+* **Simulation Service**: FastAPI
+* **Messaging**: Kafka (Avro + Schema Registry)
+* **Database**: PostgreSQL
+* **Observability**: Prometheus + Grafana
+* **Testing**: Pytest
+* **Event Processing**: Custom Kafka Event Publisher & Listener
 
-```
-Input profiles:
-21 25 28
-17
-17 22 17 19 17
+---
 
-Day 1 Results:
-Profile 1: 3 crews × 195 = 585 cubic yards
-Profile 2: 1 crew × 195 = 195 cubic yards
-Profile 3: 5 crews × 195 = 975 cubic yards
-Total: 1,755 cubic yards × 1,900 = 3,334,500 Gold Dragons
-```
+## 🧩 Features
 
-## ⚙️ Architecture
+* **Modular Architecture**: Domain logic isolated from Django and FastAPI apps
+* **Asynchronous Simulation**: Triggered by Kafka events, decoupled from HTTP APIs
+* **Threaded Execution**: Multi-threaded wall section building for team-based scenarios
+* **Event Sourcing**: Log-driven state reconstruction and auditability
+* **Metrics and Logs**: Track simulation performance (RPS, response time)
+* **Reusable Domain Layer**: Pure Python layer reused across services for business logic
 
-* **Django 5** + **Django REST Framework**
-* **PostgreSQL** for data storage
-* **Docker** for orchestration
-* **Prometheus + Grafana** for observability
-* **Calculation engine** in `shared/wall_common/`
+---
 
-## 🚀 Quick Start
+## 🏗️ Kafka Simulation Events
 
-### Prerequisites
+* Used for **decoupled orchestration** and event logging
+* Enables **asynchronous simulation triggering**
+* Drives **team-based, multi-threaded simulation mode**
+* Allows **parallel testability** via thread pools
 
-* Docker & Docker Compose
+---
 
-### 1. Start the System
+## 🚀 Getting Started
+
+### 1. Clone & Setup
 
 ```bash
-docker compose up -d kafka zookeeper postgres prometheus grafana
-
-docker compose up -d api
-
-docker compose ps
+git clone https://github.com/yourname/The-Wall-take-home.git
+cd The-Wall-take-home
+poetry install
 ```
 
-### 2. Load Wall Profiles
+### 2. Start Services
 
 ```bash
-curl -X POST http://localhost:8000/api/v1/load-config/ \
-  -H "Content-Type: application/json" \
-  -d '{"config": ["21 25 28", "17", "17 22 17 19 17"]}'
+docker-compose up -d wall-zookeeper wall-kafka wall-postgres wall-prometheus wall-grafana
 ```
 
-### 3. Verify Implementation
+### 3. Run Migrations & Server
 
 ```bash
-./test_task_final.sh
+# API Gateway (Django)
+poetry run python manage.py migrate
+poetry run python manage.py runserver
 ```
 
-## 📊 API Reference
+---
 
-### Daily Ice Usage
+## 🔬 Running Simulations
 
-```http
-GET /api/v1/profiles/{profile_id}/days/{day}/
-```
+Create a wall profile via the API (e.g., `/api/profiles/`).
+This triggers a Kafka event which starts the asynchronous simulation in the simulation service.
 
-Returns: `{"day": 1, "ice_amount": "585.00", "active_sections": 3}`
+You can monitor simulations via:
 
-### Profile Cost Overview
+* Logs
+* Kafka topics (e.g., `wall.simulation.events`)
+* Prometheus metrics (e.g., Avg RPS, Avg Response Time)
 
-```http
-GET /api/v1/profiles/{profile_id}/overview/{day}/
-```
+---
 
-### All Profiles Overview
+## 📊 Observability
 
-```http
-GET /api/v1/profiles/overview/{day}/
-```
+* **Prometheus**: Tracks simulation performance, Kafka throughput
+* **Grafana Dashboards**: Preconfigured for wall simulation metrics
+* **Log-Driven Replay**: Replay events for debugging or rerunning simulations
 
-### Final Total Cost
-
-```http
-GET /api/v1/profiles/overview/
-```
+---
 
 ## 🧪 Testing
 
-### Automated Test Suite
+```bash
+make test  # runs unit tests and API tests
+```
+
+Supports:
+
+* Isolated domain layer testing
+* Kafka event mocking
+* Django REST API tests
+
+---
+
+## 🧠 Design Highlights
+
+* **Domain-Driven Design**: Central `WallProfile` domain reused in Django and FastAPI
+* **Testability**: Domain logic can be tested without Django or Kafka dependencies
+* **Threaded Builders**: Simulates multiple crews working on wall segments concurrently
+* **Extensibility**: Easily add new simulation modes or materials
+
+---
+
+## 📁 Project Structure
 
 ```bash
-./test_task_final.sh
+.
+├── thewall/                 # Django app
+├── services/simulation/    # FastAPI simulation app
+├── shared/wall_common/     # Pure Python domain logic
+├── docker-compose.yml      # Infra services
+└── tests/                  # Unit + integration tests
 ```
-
-Validates:
-
-* All endpoints respond correctly
-* Crew management & calculations are accurate
-* All example cases from task are covered
-
-### Manual Testing
-
-```bash
-curl http://localhost:8000/health/
-curl http://localhost:8000/api/v1/task-profiles/
-```
-
-## 🗂️ Project Structure
-
-```
-thewall/
-├── apps/
-│   ├── profiles/
-│   ├── health/
-│   └── common/
-├── shared/wall_common/
-├── infrastructure/
-├── test_task_final.sh
-├── docker-compose.yml
-```
-
-## ⚡ Performance & Monitoring
-
-* **Grafana**: [http://localhost:3000](http://localhost:3000) (admin/admin)
-* **Prometheus**: [http://localhost:9090](http://localhost:9090)
-* **Health**: [http://localhost:8000/health/](http://localhost:8000/health/)
-
-### Benchmark Results
-
-* Avg RPS: 337.5
-* Avg Response Time: 29.6ms
-* Error Rate: 0.00%
-
-### Example Performance
-
-* `GET /profiles/1/days/1/` → 13.8ms
-* `GET /profiles/overview/` → 117.3ms
-
-## 🔧 Development
-
-### Local
-
-```bash
-pip install poetry
-poetry install
-cd thewall
-python manage.py migrate
-python manage.py runserver
-```
-
-### Docker
-
-```bash
-docker compose up -d
-docker compose logs -f api
-docker compose down -v
-```
-
-## 🎯 Validation Summary
-
-### Task Verification ✅
-
-| Test Case          | Expected  | Actual       | Status |
-| ------------------ | --------- | ------------ | ------ |
-| Profile 1, Day 1   | 585       | 585.00       | ✅      |
-| Profile 2, Day 1   | 195       | 195.00       | ✅      |
-| Profile 3, Day 1   | 975       | 975.00       | ✅      |
-| Day 1 Cost         | 3,334,500 | 3,334,500.00 | ✅      |
-| Profile 2 Complete | Day 14    | Day 14       | ✅      |
-
-### Logic & API
-
-* ✅ Concurrent crew simulation
-* ✅ Section completion + crew relief
-* ✅ Accurate cost: `ice × 1,900`
-* ✅ Exact match with task-provided data
-
-##  Production Deployment
-
-```bash
-export DJANGO_SETTINGS_MODULE=thewall.settings.production
-export SECRET_KEY=your-production-secret
-export DB_HOST=your-postgres-host
-export DB_NAME=wall_production
-export DB_USER=wall_user
-export DB_PASSWORD=secure-password
-```
-
-## 🤝 Contributing
-
-1. Fork and branch
-2. Code + tests
-3. Run `./test_task_final.sh`
-4. Open a PR
-
-## 📜 License
-
-GNU GPL v3.0 - see LICENSE
-
